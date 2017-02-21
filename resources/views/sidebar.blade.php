@@ -34,7 +34,7 @@
                     <a href="#"><span>{{ $val[0] }}</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{ url('/tmp-tpos-bill') }}">{{ $val[1] }}</a></li>
-                        <li><a href="#">{{ $val[2] }}</a></li>
+                        <li><a href="{{ url('/tmp-tpos-bill-item') }}">{{ $val[2] }}</a></li>
                     </ul>
                 </li>
             @endforeach
