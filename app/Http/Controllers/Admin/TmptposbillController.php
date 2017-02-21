@@ -21,13 +21,12 @@ class TmptposbillController extends Controller
     }
 
     public function index() {
-    	// $data = $this->model->get();
-    	return view('table.tmp_t_pos_bill');
+        $count = $this->model->getTable()->count();
+    	return view('table.tmp_t_pos_bill')->with('count', $count);
     }
 
     public function show($type = null) {
-    	\Log::info('masuk');
-    	 if ($type == 'datatables') {
+    	if ($type == 'datatables') {
             $tmp = $this->model->getTable()->get();
             $request_details= collect($tmp);            
             return Datatables::of($request_details)

@@ -7,7 +7,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset('/bower_components/AdminLTE/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image" />
+                <img src="{{ asset('/bower_components/AdminLTE/dist/img/kfcadmin.jpg') }}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
                 <p>{{ Auth::user()->name }}</p>
@@ -17,14 +17,14 @@
         </div>
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        <!-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
                 <span class="input-group-btn">
                   <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                 </span>
             </div>
-        </form>
+        </form> -->
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->

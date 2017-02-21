@@ -14,4 +14,11 @@ class Tmptposbill extends Model
     {
     	return DB::table('tmp_tpos_bill');
     }
+
+    public function count()
+    {
+    	$count = DB::table('tmp_tpos_bill')->count();
+
+    	return $count;
+    }
 }

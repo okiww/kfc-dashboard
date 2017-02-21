@@ -4,6 +4,12 @@
 
 @section('content')
     <section class="content-header">
+        <h1>
+            {!! trans('app.menu.tmp_tposbill') !!}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Total Data : {{ $count }}</a></li>
+        </ol>
     </section>
     <section class="content" id="index-component">
         <div class="box box-primary">

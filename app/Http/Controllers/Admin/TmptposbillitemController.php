@@ -21,7 +21,8 @@ class TmptposbillitemController extends Controller
     }
 
     public function index() {
-    	return view('table.tmp_tpos_bill_item');
+        $count = $this->model->getTable()->count();
+    	return view('table.tmp_tpos_bill_item')->with('count', $count);
     }
 
     public function show($type = null) {
