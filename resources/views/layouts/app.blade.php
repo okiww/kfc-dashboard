@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body id="app-layout">
+<body id="app-layout" style="background-image:url('assets/kfc.jpg');background-size: cover;">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -68,7 +68,6 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
 
     <!-- JavaScripts -->
