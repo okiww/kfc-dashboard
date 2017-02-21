@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{ $page_title[0] or "AdminLTE Dashboard" }}</title>
+    <title>{{ $page_title[0] or "FFI DASHBOARD" }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     @include('table.styles')
 
