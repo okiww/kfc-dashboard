@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>FFI</b>DASHBOARD</a>
+    <a href="{{ url('/') }}" class="logo"><b>FFI</b>DASHBOARD</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
