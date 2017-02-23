@@ -12,7 +12,7 @@ class Menu extends Model
 
     public function menus()
     {
-        return DB::table('menu_parents')->get();
+        return Menu::select('*')->get();
     }
 
     public function menuChilds()

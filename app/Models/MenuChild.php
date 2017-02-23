@@ -17,6 +17,6 @@ class MenuChild extends Model
     }
 
     public function get($id) {
-    	return DB::table('menu_child')->select('name', 'menu_id')->where('menu_id', $id)->get();
+    	return MenuChild::select('name', 'menu_id')->where('menu_id', $id)->get();
     }
 }
