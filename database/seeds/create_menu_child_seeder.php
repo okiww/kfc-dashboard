@@ -18,7 +18,7 @@ class create_menu_child_seeder extends Seeder
 
         DB::table('menu_child')->insert([
             'name' => 'tmp_tpos_bill_item',
-            'menu_id' => 1
+            'menu_id' => 2
         ]);
     }
 }

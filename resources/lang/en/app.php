@@ -11,6 +11,7 @@ return [
         // Alphabet A
         'dashboard' => 'Dashboard',
         'tmp_tposbill' => 'TMP T POS BILL',
+        'confirm_delete' => 'Confitm Delete',
     ],
     'menu' => [
         // Symbol
@@ -18,6 +19,23 @@ return [
         // Alphabet A
         'tmp_tposbill' => 'TMP T POS BILL',
         'tmp_tposbill_item' => 'TMP T POS BILL ITEM',
+        'create_user' => 'Create User',
+        'user' => 'User',
+    ],
+    'message' => [
+        // Symbol
+
+        // Alphabet A
+        'question' => [
+            'delete' => 'Do You Want To Delete ?',
+        ]
+    ],
+    'button' => [
+        // Symbol
+
+        // Alphabet A
+        'delete' => 'Delete',
+        'close' => 'Close',
     ]
 
 ];

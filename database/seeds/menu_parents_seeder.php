@@ -14,5 +14,9 @@ class menu_parents_seeder extends Seeder
         DB::table('menu_parents')->insert([
             'name' => 'table'
         ]);
+
+        DB::table('menu_parents')->insert([
+            'name' => 'user'
+        ]);
     }
 }
