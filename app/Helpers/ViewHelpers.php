@@ -7,6 +7,11 @@
  * @param string        $numberName
  * @return array object with number
  */
+
+use Intervention\Image\ImageManager;
+use Intervention\Image\Facades\Image;
+
+
 if (! function_exists('get_ordinal_numbers')) {
     function get_ordinal_numbers($data, $currentIndex = 1, $numberName = 'no')
     {
@@ -85,5 +90,35 @@ if (! function_exists('check_child')) {
         }
 
         return $treeView;
+    }
+}
+
+if (! function_exists('upload_file')) {
+    function upload_file($data, $filepath = 'uploads/', $filetype = 'image', $type = 'public')
+    {
+        if (!empty($data) && $data->isValid()) {
+            $fileExtension = strtolower($data->getClientOriginalExtension());
+            $newFilename = str_random(20) . '.' . $fileExtension;
+
+            if(!File::exists($filepath)) {
+                File::makeDirectory($filepath, $mode = 0777, true, true);
+            }
+
+            if($filetype == 'image'){
+                $file = Image::make($data);
+                $file->save($filepath.$newFilename);
+                $compressedImage = compress_image($filepath.$newFilename);
+                $imageThumbnail = image_thumbnail($filepath.$newFilename);
+            }else{
+                $file = $data->move($filepath, $newFilename);
+            }
+            $result['original'] = $filepath.$newFilename;
+            $result['standard'] = $compressedImage;
+            $result['thumbnail'] = $imageThumbnail;
+
+            return  $result;
+        }
+        
+        return '';
     }
 }

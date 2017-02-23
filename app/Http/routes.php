@@ -32,6 +32,8 @@ Route::group(['as' => 'admin::', 'namespace' => 'User'], function () {
 	Route::get('/user/create', ['as' => 'user.create', 'uses' => 'UserController@create']);
 	Route::get('user/show/{type}', ['as' => 'user.show', 'uses' => 'UserController@show']);
 	Route::post('/user/register', ['as' => 'user.register', 'uses' => 'UserController@store']);	
-	Route::delete('/user/delete/{id}', ['as' => 'user.destroy', 'uses' => 'UserController@destroy']);	
+	Route::delete('/user/delete/{id}', ['as' => 'user.destroy', 'uses' => 'UserController@destroy']);
+	Route::get('/user/edit/{id}', ['as' => 'user.edit', 'uses' => 'UserController@edit']);
+	Route::post('/user/update/', ['as' => 'user.update', 'uses' => 'UserController@update']);		
 });
 
