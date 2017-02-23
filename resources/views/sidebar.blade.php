@@ -29,16 +29,22 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            @foreach ($menus as $val)
-                <li class="treeview">
-                    <a href="#"><span>{{ $val[0] }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ url('/tmp-tpos-bill') }}">{{ $val[1] }}</a></li>
-                        <li><a href="{{ url('/tmp-tpos-bill-item') }}">{{ $val[2] }}</a></li>
-                    </ul>
-                </li>
-            @endforeach
-        </ul><!-- /.sidebar-menu -->
+            <li class="treeview">
+                <a href="#"><span>Table</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('/tmp-tpos-bill') }}">Tmp T Pos Bill</a></li>
+                    <li><a href="{{ url('/tmp-tpos-bill-item') }}">Tmp T Pos Bill Item</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#"><span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('/user') }}">Data</a></li>
+                    <li><a href="{{ url('/user/create') }}">Create</a></li>
+                </ul>
+            </li>
+        </ul>
     </section>
-    <!-- /.sidebar -->
+    
 </aside>

@@ -9,6 +9,7 @@
 <!-- Themes -->
 <script src="{{ asset ('/themes/admin-lte/dist/js/app.min.js') }}"></script>
 <script src="{{ asset ('/themes/admin-lte/dist/js/demo.js') }}"></script>
+<script src="{{ asset ('/js/scripts.js') }}"></script>
 
 <!-- Styles -->
 @stack('scripts')

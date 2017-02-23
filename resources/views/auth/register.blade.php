@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('admin_template')
+@section('title') | {!! trans('app.label.dashboard') !!}@endsection
 
 @section('content')
 <div class="container">
@@ -7,7 +8,7 @@
             <div class="panel panel-default" style="opacity: 0.9;">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

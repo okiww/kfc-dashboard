@@ -53,6 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main content -->
         <section class="content">
+            @include('flash::message')
             <!-- Your Page Content Here -->
             @yield('content')
         </section><!-- /.content -->
@@ -60,6 +61,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Footer -->
     @include('footer')
+    @include('layouts.delete')
+    @include('layouts.detail')
 
 </div><!-- ./wrapper -->
 <script src="{{ asset ('/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>

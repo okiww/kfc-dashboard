@@ -37,7 +37,6 @@
 
 @push('scripts')
     <script type="text/javascript">
-        console.log('aaaa');
         $(function () {
             $('.view-datatables').DataTable({
                 processing: true,
