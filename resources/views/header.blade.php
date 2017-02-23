@@ -24,14 +24,14 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{ asset("/bower_components/AdminLTE/dist/img/kfcadmin.jpg") }}" class="user-image" alt="User Image"/>
+                        <img src="{{ Auth::user()->avatar }}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{{ asset("/bower_components/AdminLTE/dist/img/kfcadmin.jpg") }}" class="img-circle" alt="User Image" />
+                            <img src="{{ asset(Auth::user()->avatar) }}" class="img-circle" alt="User Image" />
                             <p>
                                 {{ Auth::user()->name }}
                                 <small>{{ Auth::user()->created_at }}</small>
@@ -40,6 +40,9 @@
                         <!-- Menu Body -->
                         <!-- Menu Footer-->
                         <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="{{ asset(Auth::user()->avatar) }}" class="btn btn-warning btn-flat">Edit</a>
+                            </div>
                             <div class="pull-right">
                                 <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>

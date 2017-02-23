@@ -20,6 +20,7 @@ return [
         'tmp_tposbill' => 'TMP T POS BILL',
         'tmp_tposbill_item' => 'TMP T POS BILL ITEM',
         'create_user' => 'Create User',
+        'edit_user' => 'Edit User',
         'user' => 'User',
     ],
     'message' => [

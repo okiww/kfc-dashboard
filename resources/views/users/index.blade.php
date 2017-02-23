@@ -11,6 +11,9 @@
     </section>
     <section class="content" id="index-component">
         <div class="box box-primary">
+            <div class="box-header with-border">
+                <a class="btn btn-primary" href="{!! route('admin::user.create') !!}">Add</a>
+            </div>
             <div class="box-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered view-datatables" width="100%">
@@ -39,9 +42,9 @@
             serverSide: true,
             ajax: "{!! route('admin::user.show', 'datatables') !!}",
             columns: [
-                { data: 'id', name: 'id', searchable: true, width: '5%', className: 'dt-center' },
-                { data: 'name', name: 'name' },
-                { data: 'email', name: 'email' },
+                { data: 'id', name: 'id', width: '5%', className: 'dt-center' },
+                { data: 'name', name: 'name', width: '30%', searchable: true },
+                { data: 'email', name: 'email', width: '30%', searchable: true },
                 { data: 'action', name: 'action', orderable: false, searchable: false, width: '12%', className: 'dt-center' }
             ],
             drawCallback: function () {

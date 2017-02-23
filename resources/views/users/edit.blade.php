@@ -5,21 +5,21 @@
 @section('content')
     <section class="content-header">
         <h1>
-            {!! trans('app.menu.create_user') !!}
+            {!! trans('app.menu.edit_user') !!}
         </h1>
     </section>
     <section class="content" id="index-component">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/register') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -33,7 +33,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">New Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
