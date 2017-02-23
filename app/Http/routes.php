@@ -27,3 +27,11 @@ Route::group(['as' => 'admin::', 'namespace' => 'Admin'], function () {
 	Route::get('tmp-tpos-bill-item/show/{type}', ['as' => 'tmptposbillitem.show', 'uses' => 'TmptposbillitemController@show']);
 });
 
+Route::group(['as' => 'admin::', 'namespace' => 'User'], function () {
+	Route::get('/user', ['as' => 'user.index', 'uses' => 'UserController@index']);
+	Route::get('/user/create', ['as' => 'user.create', 'uses' => 'UserController@create']);
+	Route::get('user/show/{type}', ['as' => 'user.show', 'uses' => 'UserController@show']);
+	Route::post('/user/register', ['as' => 'user.register', 'uses' => 'UserController@store']);	
+	Route::delete('/user/delete/{id}', ['as' => 'user.destroy', 'uses' => 'UserController@destroy']);	
+});
+
