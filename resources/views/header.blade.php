@@ -41,7 +41,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{ asset(Auth::user()->avatar) }}" class="btn btn-warning btn-flat">Edit</a>
+                                <a href="{{ url('/user/edit/'.Auth::user()->id) }}" class="btn btn-default btn-flat">Edit</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
