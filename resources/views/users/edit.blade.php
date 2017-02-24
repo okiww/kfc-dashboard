@@ -61,7 +61,12 @@
                             <label class="col-md-4 control-label">Avatar</label>
                             <div class="col-md-6 upload-image">
                                 <input type="file" id="upload-file" name="upload" value="{!! old('upload') !!}">
-                                <img class="img-thumbnail" id="upload-thumbnail" data-src="holder.js/300x300">
+                                <input type="hidden" id="avatar" name="avatar" value="{!! $user->avatar !!}">
+                                @if ($user->avatar)
+                                    <img class="img-thumbnail" id="upload-thumbnail" data-src="holder.js/300x300" src="{{ asset($user->avatar) }}">
+                                @else
+                                    <img class="img-thumbnail" id="upload-thumbnail" data-src="holder.js/300x300">
+                                @endif
                                 <button type="button" class="btn btn-danger" id="upload-remove">
                                     Remove
                                 </button>
@@ -78,6 +83,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> Update
                                 </button>
+                                <a type="button" href="{{ url('/user') }}" class="btn btn-warning">
+                                    <i class="fa fa-btn fa-user"></i> Cancel
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -126,7 +134,9 @@
 
         $('#upload-remove').on('click', function () {
             $('#upload-file').val('');
-            $('#upload-thumbnail').attr('src', '');
+            $('#avatar').val('');
+            $('.upload-image img').hide();
+            $('#upload-remove').hide();
             Holder.run({
                 image: '#upload-thumbnail'
             });

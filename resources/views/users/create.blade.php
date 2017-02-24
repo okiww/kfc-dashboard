@@ -91,6 +91,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> Register
                                 </button>
+                                <a type="button" href="{{ url('/user') }}" class="btn btn-warning">
+                                    <i class="fa fa-btn fa-user"></i> Cancel
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -142,6 +145,8 @@
         $('#upload-remove').on('click', function () {
             $('#upload-file').val('');
             $('#upload-thumbnail').attr('src', '');
+            $('.upload-image img').hide();
+            $('#upload-remove').hide();
             Holder.run({
                 image: '#upload-thumbnail'
             });

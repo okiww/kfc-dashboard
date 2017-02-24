@@ -10,6 +10,7 @@ return [
 
         // Alphabet A
         'dashboard' => 'Dashboard',
+        'welcome' => 'Welcome to KFC Dashboard',
         'tmp_tposbill' => 'TMP T POS BILL',
         'confirm_delete' => 'Confitm Delete',
     ],

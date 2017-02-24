@@ -30,11 +30,11 @@
             </li>
 
             <li class="treeview">
-                <a href="#"><span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('/user') }}">Data</a></li>
+                <a href="{{ url('/user') }}"><span>Users Management</span> <!-- <i class="fa fa-angle-left pull-right"></i> --></a>
+                <!-- <ul class="treeview-menu">
+                    <li><a href="">List User</a></li>
                     <li><a href="{{ url('/user/create') }}">Create</a></li>
-                </ul>
+                </ul> -->
             </li>
         </ul>
     </section>

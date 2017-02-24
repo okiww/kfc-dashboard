@@ -43,14 +43,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <!-- <section class="content-header">
             <h1>
-               {!! trans('app.label.dashboard') !!}
+               {!! trans('app.label.welcome') !!}
                 <small>{{ $page_description or null }}</small>
             </h1>
-            <!-- You can dynamically generate breadcrumbs here -->
-        </section>
-
+            You can dynamically generate breadcrumbs here
+        </section>-->
         <!-- Main content -->
         <section class="content">
             @include('flash::message')

@@ -86,7 +86,7 @@ class UserController extends Controller
 
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required'
         ]);
@@ -95,6 +95,11 @@ class UserController extends Controller
             return redirect()->route('admin::'.$this->controller.'.create')->withErrors($validate);
         } else {
             try {
+                $user = $this->model;
+                $user->name = $request->input('name');
+                $user->email = $request->input('email');
+                $user->password = bcrypt($request->input('password'));
+
                 if($request->hasFile('upload')) {   
                     $image = $request->file('upload');
                     $filename  = time() . '.' . $image->getClientOriginalExtension();
@@ -102,12 +107,8 @@ class UserController extends Controller
                     $uploaded = $request->file('upload')->move($path, $filename);
 
                     $url = $uploaded->getPathName();
+                    $user->avatar = $url;
                 }
-                $user = $this->model;
-                $user->name = $request->input('name');
-                $user->email = $request->input('email');
-                $user->password = bcrypt($request->input('password'));
-                $user->avatar = $url;
                 $user->save();   
 
             } catch (Exception $e) {
@@ -130,12 +131,12 @@ class UserController extends Controller
         $user = User::find($request->id);
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'min:6|confirmed',
+            'email' => 'required|email|max:255|unique:users,email,'.$request->id,
+            'password' => 'min:6',
         ]);
 
         if ($validate->fails()) {
-            return redirect()->route('admin::'.$this->controller.'.edit', [$user])->withErrors($validate);;
+            return redirect()->route('admin::'.$this->controller.'.edit', [$user])->withErrors($validate);
         } else {
             try {
                 $user->name = $request->input('name');
@@ -146,15 +147,15 @@ class UserController extends Controller
                 } else {
                     $user->password = $user->password;
                 }
-                
                 if($request->hasFile('upload')) {   
                     $image = $request->file('upload');
                     $filename  = time() . '.' . $image->getClientOriginalExtension();
                     $path = 'uploads/avatars/' . $filename;
                     $uploaded = $request->file('upload')->move($path, $filename);
-
                     $url = $uploaded->getPathName();
                     $user->avatar = $url;
+                } else {
+                    $user->avatar = $request->input('avatar');
                 }
                 $user->save();   
 

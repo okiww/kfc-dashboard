@@ -22,6 +22,6 @@ class AdminController extends Controller
     public function index()
     {
     	$page_title = ["FFI"];
-        return view('admin_template', $page_title);
+        return view('welcome', $page_title);
     }
 }

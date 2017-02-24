@@ -8,7 +8,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> {!! trans('app.label.confirm_delete') !!}</h4>
+                    <h4 class="modal-title"><i></i> {!! trans('app.label.confirm_delete') !!}</h4>
                 </div>
                 <div class="modal-body">
                     <h4 class="text-center">{!! trans('app.message.question.delete') !!}</h4>
