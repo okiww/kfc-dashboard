@@ -86,8 +86,8 @@ class UserController extends Controller
 
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|confirmed',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required'
         ]);
 
@@ -130,9 +130,8 @@ class UserController extends Controller
         $user = User::find($request->id);
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required'
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'min:6|confirmed',
         ]);
 
         if ($validate->fails()) {
@@ -141,7 +140,13 @@ class UserController extends Controller
             try {
                 $user->name = $request->input('name');
                 $user->email = $request->input('email');
-                $user->password = bcrypt($request->input('password'));
+
+                if ($request->input('password')) {
+                    $user->password = bcrypt($request->input('password'));
+                } else {
+                    $user->password = $user->password;
+                }
+                
                 if($request->hasFile('upload')) {   
                     $image = $request->file('upload');
                     $filename  = time() . '.' . $image->getClientOriginalExtension();

@@ -117,9 +117,22 @@
 
 @push('scripts')
 <script type="text/javascript">
+
+    $(document).ready(function(e) {
+        $imgsrc=$('.upload-image img').attr('src');
+        if ($imgsrc == undefined) {
+            $('#upload-remove').hide();
+            $('.upload-image img').hide();
+        } else {
+            
+        }
+    });
+
     $(function(){
         $('#upload-file').on('change', function () {
             call.readerImageURL(this, '#upload-thumbnail');
+            $('.upload-image img').show();
+            $('#upload-remove').show();
         });
 
         $('#upload-thumbnail').on('click', function () {
