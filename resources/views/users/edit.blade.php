@@ -20,6 +20,7 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}">
+                                <input id="id" type="hidden" class="form-control" name="id" value="{{ $user->id }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">

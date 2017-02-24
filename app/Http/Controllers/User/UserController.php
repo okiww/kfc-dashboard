@@ -12,6 +12,7 @@ use DB;
 use Validator;
 use Auth;
 use Image;
+use Response;
 
 class UserController extends Controller
 {
@@ -64,7 +65,7 @@ class UserController extends Controller
             $return .= '<div class="form-group">';
                 $return .= '<label class="col-sm-3 control-label"></label>';
                 $return .= '<div class="col-sm-9">';
-                    $return .= '<p class="form-control-static"><img src="'.asset($user->avatar).'" class="img-circle" alt="User Image" height="100" width="100"/></p>';
+                    $return .= '<p class="form-control-static"><img src="'.asset($user->avatar ? $user->avatar : 'assets/defaultavatar.png').'" class="img-circle" alt="User Image" height="100" width="100"/></p>';
                 $return .= '</div>';
                 $return .= '<label class="col-sm-3 control-label">Name :</label>';
                 $return .= '<div class="col-sm-9">';
@@ -82,16 +83,16 @@ class UserController extends Controller
     }
 
     public function store(Request $request) {
+
         $validate = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
         ]);
 
         if ($validate->fails()) {
-            return Response::json([
-                'status' => array('code' => 400, 'message' => $validate->errors())
-            ], 400);
+            return redirect()->route('admin::'.$this->controller.'.create')->withErrors($validate);
         } else {
             try {
                 if($request->hasFile('upload')) {   
@@ -122,23 +123,25 @@ class UserController extends Controller
     public function edit($id) {
 
         $user = User::find($id);
-        return view('users.edit')->with('user', $user);;
+        return view('users.edit')->with('user', $user);
     }
 
     public function update(Request $request) {
-
+        $user = User::find($request->id);
         $validate = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
         ]);
 
         if ($validate->fails()) {
-            return Response::json([
-                'status' => array('code' => 400, 'message' => $validate->errors())
-            ], 400);
+            return redirect()->route('admin::'.$this->controller.'.edit', [$user])->withErrors($validate);;
         } else {
             try {
+                $user->name = $request->input('name');
+                $user->email = $request->input('email');
+                $user->password = bcrypt($request->input('password'));
                 if($request->hasFile('upload')) {   
                     $image = $request->file('upload');
                     $filename  = time() . '.' . $image->getClientOriginalExtension();
@@ -146,12 +149,8 @@ class UserController extends Controller
                     $uploaded = $request->file('upload')->move($path, $filename);
 
                     $url = $uploaded->getPathName();
+                    $user->avatar = $url;
                 }
-                $user = Auth::user();
-                $user->name = $request->input('name');
-                $user->email = $request->input('email');
-                $user->password = bcrypt($request->input('password'));
-                $user->avatar = $url;
                 $user->save();   
 
             } catch (Exception $e) {
