@@ -8,7 +8,7 @@
                 <div class="panel-heading">Reset Password</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/update') }}">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">
@@ -22,6 +22,12 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+
+                                @if ($errors->has('not-find'))
+                                    <span class="help-block">
+                                        <strong>User email can't found</strong>
                                     </span>
                                 @endif
                             </div>
