@@ -26,4 +26,9 @@ class HomeController extends Controller
     {
         return view('auth.login');
     }
+
+    public function resetPassword() 
+    {
+        return view('auth.passwords.reset');
+    }
 }

@@ -14,6 +14,13 @@
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::post('/password/reset', [ 'as' => 'password.reset', 'uses' => 'Auth\PasswordController@resetPassword']);
+Route::post('/password/update', 'Auth\PasswordController@update_password');
+Route::get('/password/update', [ 'as' => 'password.update', 'uses' => 'Auth\PasswordController@resetPassword']);
+Route::get('index/{email}/{token}', [ 'as' => 'password.index', 'uses' => 'Auth\PasswordController@index']);
+Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\AuthController@login']);
+
+
 Route::group(['as' => 'admin::', 'namespace' => 'Admin'], function () {
 	Route::get('/', 'AdminController@index');	
 
